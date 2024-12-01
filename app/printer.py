@@ -1,4 +1,4 @@
-from tests import FakeConnexion
+from .utils import FakeConnexion
 
 
 class Printer:
@@ -19,7 +19,7 @@ class Printer:
         response = self.connexion.readline()
         return response.decode().strip().lower()
 
-    def cmd(self, command):
+    def cmd(self, command) -> bool:
         """
         General command function
         command example: "G1 X10 Y18 Z10 E10"
@@ -32,3 +32,5 @@ class Printer:
             response = self.read()
             # time.sleep(0.1)  # Wait for 0.1 second
             print(response)
+
+        return True
