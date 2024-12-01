@@ -19,3 +19,9 @@ def main():
 def command(cmd: str):
     response = printer.cmd(cmd)
     return {"response": response}
+
+
+@app.get("/eject")
+def eject():
+    print("eject")
+    return {"response": "OK"}

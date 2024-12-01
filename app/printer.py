@@ -1,3 +1,5 @@
+import serial
+
 from .utils import FakeConnexion
 
 
@@ -8,8 +10,6 @@ class Printer:
         if fake is True:
             self.connexion = FakeConnexion()
         else:
-            import serial
-
             self.connexion = serial.Serial("COM3", 115200)
 
     def write(self, command: str):
