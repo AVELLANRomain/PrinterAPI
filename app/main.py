@@ -1,6 +1,6 @@
 # upload the file on the raspberry: scp -r ../API micro@192.168.1.141:EnderLab
 # activate virtual environement: source test/bin/activate
-# lancer l'api: uvicorn API.main:app --host 0.0.0.0 --port 8000 --reload
+# lancer l'api: uvicorn API.main:app --host 0.0.0.0 --port 80 --reload
 
 from fastapi import FastAPI
 
@@ -17,8 +17,10 @@ def main():
 
 @app.get("/cmd")
 def command(cmd: str):
-    response = printer.cmd(cmd)
-    return {"response": response}
+    success = printer.cmd(cmd)
+    if success:
+        return {"response": cmd}
+    return {"response": "error"}
 
 
 @app.get("/eject")
