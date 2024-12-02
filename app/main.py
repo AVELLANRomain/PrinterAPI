@@ -1,12 +1,12 @@
-# upload the file on the raspberry: scp -r ../API micro@192.168.1.141:EnderLab
+# upload the file on the raspberry: scp -r ../PrinterAPI micro@192.168.1.141:EnderLab
 # activate virtual environement: source test/bin/activate
-# lancer l'api: uvicorn API.main:app --host 0.0.0.0 --port 80 --reload
+# lancer l'api: uvicorn PrinterAPI.app.main:app --host 0.0.0.0 --port 5000 --reload
 
 from fastapi import FastAPI
 
 from .printer import Printer
 
-printer = Printer(fake=True)
+printer = Printer(fake=False)
 app = FastAPI()
 
 

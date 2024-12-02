@@ -10,7 +10,7 @@ class Printer:
         if fake is True:
             self.connexion = FakeConnexion()
         else:
-            self.connexion = serial.Serial("COM3", 115200)
+            self.connexion = serial.Serial("/dev/ttyUSB0", 115200)
 
     def write(self, command: str):
         self.connexion.write(f"{command}\n".encode())
