@@ -36,8 +36,6 @@ def command(cmd: str):
 
 @app.get("/eject")
 def eject():
-    # pwm.start(0)
-
     pwm.ChangeDutyCycle(9)  # 0°
     sleep(1)
     pwm.ChangeDutyCycle(7.5)  # -45°
@@ -45,6 +43,5 @@ def eject():
     pwm.ChangeDutyCycle(9)  # 0°
     sleep(1)
 
-    # pwm.stop()
     print("eject")
     return {"response": "OK"}
